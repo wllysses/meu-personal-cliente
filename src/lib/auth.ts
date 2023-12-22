@@ -13,16 +13,19 @@ export const nextAuthOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials, req) {
-        const response = await fetch("http://localhost:3000/api/login", {
-          cache: "no-store",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            access_code: credentials?.access_code,
-          }),
-        });
+        const response = await fetch(
+          "https://meu-personal-cliente.vercel.app/api/login",
+          {
+            cache: "no-store",
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              access_code: credentials?.access_code,
+            }),
+          }
+        );
 
         const data = await response.json();
 
